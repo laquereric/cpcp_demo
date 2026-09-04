@@ -18,10 +18,10 @@ NOTES = [{"id": 1, "title": "Welcome", "body": "seeded by the demo seam"}]
 RECEIPTS = {}
 
 CONTEXT = {
-    "@vocab": "https://w3id.org/laquereric/cpcp/ns#",
+    "@vocab": "https://w3id.org/cpcp/ns#",
     "id": "@id",
     "type": "@type",
-    "operationId": "https://w3id.org/laquereric/json-rpc-ld/ns#operationId",
+    "operationId": "https://w3id.org/json-rpc-ld/ns#operationId",
 }
 
 
