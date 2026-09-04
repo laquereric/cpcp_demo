@@ -1,0 +1,90 @@
+{
+  "kind": "cpcp-demo",
+  "version": 1,
+  "name": "cpcp_demo",
+  "description": "Executable PushNote/PullNote demo: stub seam plus push/pull clients in eight languages.",
+  "contract": {
+    "repo": "https://github.com/laquereric/coordination-protocol-contract-package",
+    "rev": "383d8d2",
+    "note": "CIDs and clients implement the contract at this revision; drift is the runner's job to catch, not this file's."
+  },
+  "cids": [
+    "demo/push-note.cid.json",
+    "demo/pull-note.cid.json"
+  ],
+  "shapes": {
+    "canonical": "demo/shapes/note-shape.ttl",
+    "digest_file": "demo/SHAPES.json"
+  },
+  "seam": {
+    "server": "demo/server.py",
+    "routes": [
+      "POST /_cpcp/rpc",
+      "GET /_cpcp/cid.json",
+      "GET /_cpcp/up",
+      "GET /up"
+    ]
+  },
+  "runners": {
+    "matrix": "demo/run-demo.sh",
+    "shapes": "demo/check-shapes.py"
+  },
+  "languages": {
+    "python": {
+      "runners": [
+        "languages/python/examples/pull/pull.py",
+        "languages/python/examples/push/push.py"
+      ],
+      "toolchain": "python3"
+    },
+    "ruby": {
+      "runners": [
+        "languages/ruby/examples/pull/pull.rb",
+        "languages/ruby/examples/push/push.rb"
+      ],
+      "toolchain": "ruby"
+    },
+    "javascript": {
+      "runners": [
+        "languages/javascript/examples/pull/pull.mjs",
+        "languages/javascript/examples/push/push.mjs"
+      ],
+      "toolchain": "node"
+    },
+    "typescript": {
+      "runners": [
+        "languages/typescript/examples/pull/pull.ts",
+        "languages/typescript/examples/push/push.ts"
+      ],
+      "toolchain": "node"
+    },
+    "go": {
+      "runners": [
+        "languages/go/examples/pull/pull.go",
+        "languages/go/examples/push/push.go"
+      ],
+      "toolchain": "go"
+    },
+    "java": {
+      "runners": [
+        "languages/java/examples/pull/Pull.java",
+        "languages/java/examples/push/Push.java"
+      ],
+      "toolchain": "java"
+    },
+    "c": {
+      "runners": [
+        "languages/c/examples/pull/pull.c",
+        "languages/c/examples/push/push.c"
+      ],
+      "toolchain": "cc"
+    },
+    "cpp": {
+      "runners": [
+        "languages/cpp/examples/pull/pull.cpp",
+        "languages/cpp/examples/push/push.cpp"
+      ],
+      "toolchain": "c++"
+    }
+  }
+}
