@@ -5,7 +5,7 @@
   "description": "Executable PushNote/PullNote demo: stub seam plus push/pull clients in eight languages.",
   "contract": {
     "repo": "https://github.com/laquereric/coordination-protocol-contract-package",
-    "rev": "1baa97c",
+    "rev": "3b9ce9b",
     "note": "CIDs and clients implement the contract at this revision; drift is the runner's job to catch, not this file's."
   },
   "cids": [
