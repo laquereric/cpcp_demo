@@ -27,7 +27,8 @@
   },
   "runners": {
     "matrix": "demo/run-demo.sh",
-    "shapes": "demo/check-shapes.py"
+    "shapes": "demo/check-shapes.py",
+    "conform": "demo/conform.py"
   },
   "languages": {
     "python": {

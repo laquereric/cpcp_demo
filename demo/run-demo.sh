@@ -35,6 +35,9 @@ done
 export CPCP_URL="http://127.0.0.1:${PORT}/_cpcp"
 L=../languages
 
+echo "== conform: behavior matches the CIDs =="
+PORT="${PORT}" python3 conform.py || exit 1
+
 echo "== pull: seed visible (python reference) =="
 run_case py-pull python3 $L/python/examples/pull/pull.py
 echo "== push + replay: one write, first receipt twice =="

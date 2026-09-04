@@ -10,8 +10,9 @@ is runnable with nothing installed beyond toolchains:
   `check-shapes.py` fails on divergence (`SHAPES.json` records the digest).
 * `server.py` — in-memory stub (`note.list`, `note.create`,
   `/up`, `/_cpcp/up`, `/_cpcp/cid.json`). State evaporates with the process.
-* `run-demo.sh` — shape check, then every language present on the
-  machine (pull, push, replay, pull). Missing toolchains SKIP loudly;
+* `run-demo.sh` — shape check, CID conformance (`conform.py`: behavior
+  asserted against what the CIDs declare), then every language present
+  on the machine (pull, push, replay, pull). Missing toolchains SKIP loudly;
   any real failure fails the run.
 
 ```bash
