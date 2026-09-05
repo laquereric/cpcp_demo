@@ -1,33 +1,22 @@
-# cpcp_demo — the canonical CPCP package for the notes interface
+# cpcp_demo — the notes interface, with callers in eight languages
 
-`note.list` and `note.create`, defined once and executable: two CID
-documents, the shape they share, a reference seam that implements them,
-and conformance that holds the seam to what the CIDs declare.
+`note.list` and `note.create`: two CID documents, the shape they share, a
+reference seam that implements them, and conformance that holds the seam to what
+the CIDs declare.
 
-The interface is the point. Everything else here exists to prove the
-interface is real — a reference implementation that serves it, checks
-that catch it drifting from itself, and eight client examples that show
-it is not tied to one language.
-
-Contracts it conforms to:
-[coordination-protocol-contract-package](https://github.com/laquereric/coordination-protocol-contract-package).
-
-## Layout
+**The name is accurate.** [The format](https://github.com/laquereric/coordination-protocol-contract-package/blob/main/spec/repo-format.md)
+asks for *one* example caller per CID, in any language. This repo carries one
+per language because demonstrating is its job — that is a choice, not the bar.
+A conforming package needs a CID and a caller that runs.
 
 ```text
-cid/            the interface. pull-note and push-note CID documents
-shapes/         note-shape.ttl, the one canonical shape both CIDs embed,
-                plus SHAPES.json recording its digest
-seam/           server.py, the reference implementation. In-memory,
-                state evaporates with the process
-conformance/    run.sh, and the two checks it runs
+cid/            the interface: pull-note and push-note
+shapes/         note-shape.ttl, embedded in both CIDs; SHAPES.json holds its digest
+seam/           server.py, the reference implementation
+conformance/    run.sh and the two checks it runs
 examples/       one directory per language, pull and push
-.cpcp/          machine-readable manifests: the index and one per scope
+.cpcp/          the index, and one manifest per scope served
 ```
-
-Everything above used to live under `demo/`, which described how the
-repo was run rather than what it is. The name says demo; the contents
-are a package.
 
 ## Run it
 
@@ -35,13 +24,12 @@ are a package.
 ./conformance/run.sh
 ```
 
-Needs only Python 3 for the reference loop; every other language runs if
-its toolchain is present and SKIPs loudly otherwise — a skip is
-reported, never silent, and never counted as a pass. All green means
-every present client pushed, replayed, and pulled through the reference
+Python 3 runs the reference loop; every other language runs if its toolchain is
+present and SKIPs loudly otherwise — a skip is reported, never silent, never a
+pass. Green means every present caller pushed, replayed and pulled through the
 seam, and the seam still matches its CIDs.
 
-Point any client at your own pod instead via `CPCP_URL`:
+Point a caller at your own pod instead:
 
 ```bash
 CPCP_URL=http://localhost:13002/_cpcp python3 examples/python/pull.py
@@ -49,14 +37,11 @@ CPCP_URL=http://localhost:13002/_cpcp python3 examples/python/pull.py
 
 ## What holds it together
 
-* `conformance/check-shapes.py` — the CIDs embed the shape so they stay
-  portable on their own; this fails if either copy diverges from
-  `shapes/note-shape.ttl`.
-* `conformance/conform.py` — drives the seam and asserts the behaviour
-  the CIDs declare: methods exist, required params are required,
-  `operationId` replays, results carry the declared shape, envelopes
-  carry `@context`. A failure here means the package drifted from its
-  own interface.
+* `conformance/check-shapes.py` — the CIDs embed the shape so they travel alone;
+  this fails if either copy diverges from `shapes/note-shape.ttl`.
+* `conformance/conform.py` — drives the seam and asserts what the CIDs declare:
+  methods exist, required params are required, `operationId` replays, results
+  carry the shape, envelopes carry `@context`.
 
-`.cpcp/package.json` is the machine-readable index; the repo format is
-documented in the contracts repo (`spec/repo-format.md`).
+Contract: [coordination-protocol-contract-package](https://github.com/laquereric/coordination-protocol-contract-package).
+`.cpcp/package.json` is the machine-readable index.

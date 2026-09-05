@@ -9,8 +9,32 @@
     "note": "CIDs and clients implement the contract at this revision; drift is the runner's job to catch, not this file's. Full SHA per repo-format rule 5; this read 3b9ce9b, which is not an object a reader can verify and stops being unique as the repo grows."
   },
   "cids": [
-    "cid/push-note.cid.json",
-    "cid/pull-note.cid.json"
+    {
+      "cid": "cid/pull-note.cid.json",
+      "examples": [
+        "examples/c/pull.c",
+        "examples/cpp/pull.cpp",
+        "examples/go/pull.go",
+        "examples/java/Pull.java",
+        "examples/javascript/pull.mjs",
+        "examples/python/pull.py",
+        "examples/ruby/pull.rb",
+        "examples/typescript/pull.ts"
+      ]
+    },
+    {
+      "cid": "cid/push-note.cid.json",
+      "examples": [
+        "examples/c/push.c",
+        "examples/cpp/push.cpp",
+        "examples/go/push.go",
+        "examples/java/Push.java",
+        "examples/javascript/push.mjs",
+        "examples/python/push.py",
+        "examples/ruby/push.rb",
+        "examples/typescript/push.ts"
+      ]
+    }
   ],
   "shapes": {
     "canonical": "shapes/note-shape.ttl",
@@ -49,62 +73,15 @@
     "conformance/conform.py",
     "conformance/run.sh"
   ],
-  "languages": {
-    "python": {
-      "runners": [
-        "examples/python/pull.py",
-        "examples/python/push.py"
-      ],
-      "toolchain": "python3"
-    },
-    "ruby": {
-      "runners": [
-        "examples/ruby/pull.rb",
-        "examples/ruby/push.rb"
-      ],
-      "toolchain": "ruby"
-    },
-    "javascript": {
-      "runners": [
-        "examples/javascript/pull.mjs",
-        "examples/javascript/push.mjs"
-      ],
-      "toolchain": "node"
-    },
-    "typescript": {
-      "runners": [
-        "examples/typescript/pull.ts",
-        "examples/typescript/push.ts"
-      ],
-      "toolchain": "node"
-    },
-    "go": {
-      "runners": [
-        "examples/go/pull.go",
-        "examples/go/push.go"
-      ],
-      "toolchain": "go"
-    },
-    "java": {
-      "runners": [
-        "examples/java/Pull.java",
-        "examples/java/Push.java"
-      ],
-      "toolchain": "java"
-    },
-    "c": {
-      "runners": [
-        "examples/c/pull.c",
-        "examples/c/push.c"
-      ],
-      "toolchain": "cc"
-    },
-    "cpp": {
-      "runners": [
-        "examples/cpp/pull.cpp",
-        "examples/cpp/push.cpp"
-      ],
-      "toolchain": "c++"
-    }
+  "cids_note": "Rule 7 asks for ONE caller per CID. This repo is the demonstration, so it carries one per language -- that is a choice, not the bar.",
+  "toolchains": {
+    "python": "python3",
+    "ruby": "ruby",
+    "javascript": "node",
+    "typescript": "node",
+    "go": "go",
+    "java": "java",
+    "c": "cc",
+    "cpp": "c++"
   }
 }
