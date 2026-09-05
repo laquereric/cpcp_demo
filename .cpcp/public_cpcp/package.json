@@ -7,7 +7,7 @@
   "seams": [
     {
       "id": "demo-stub",
-      "server": "demo/server.py",
+      "server": "seam/server.py",
       "methods": ["note.list", "note.create"],
       "routes": [
         "POST /_cpcp/rpc",
@@ -24,7 +24,7 @@
     "bind": "127.0.0.1",
     "port_default": 18080,
     "port_env": "PORT",
-    "evidence": "demo/server.py:123 -- ThreadingHTTPServer((\"127.0.0.1\", port), Handler).serve_forever(), port from ENV PORT defaulting to 18080",
+    "evidence": "seam/server.py:123 -- ThreadingHTTPServer((\"127.0.0.1\", port), Handler).serve_forever(), port from ENV PORT defaulting to 18080",
     "note": "Loopback on the operator's own machine, which is what the scope permits. Read from the server rather than restated from the method-to-scope map: rule 4 says exposure is measured, and the map is the claim being checked, not evidence for it."
   },
   "invariants": [

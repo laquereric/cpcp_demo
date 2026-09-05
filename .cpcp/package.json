@@ -9,15 +9,15 @@
     "note": "CIDs and clients implement the contract at this revision; drift is the runner's job to catch, not this file's. Full SHA per repo-format rule 5; this read 3b9ce9b, which is not an object a reader can verify and stops being unique as the repo grows."
   },
   "cids": [
-    "demo/push-note.cid.json",
-    "demo/pull-note.cid.json"
+    "cid/push-note.cid.json",
+    "cid/pull-note.cid.json"
   ],
   "shapes": {
-    "canonical": "demo/shapes/note-shape.ttl",
-    "digest_file": "demo/SHAPES.json"
+    "canonical": "shapes/note-shape.ttl",
+    "digest_file": "shapes/SHAPES.json"
   },
   "seam": {
-    "server": "demo/server.py",
+    "server": "seam/server.py",
     "routes": [
       "POST /_cpcp/rpc",
       "GET /_cpcp/cid.json",
@@ -26,9 +26,9 @@
     ]
   },
   "runners": {
-    "matrix": "demo/run-demo.sh",
-    "shapes": "demo/check-shapes.py",
-    "conform": "demo/conform.py"
+    "matrix": "conformance/run.sh",
+    "shapes": "conformance/check-shapes.py",
+    "conform": "conformance/conform.py"
   },
   "registry": {
     "repo": "https://github.com/laquereric/cpcp_registry",
@@ -45,64 +45,64 @@
     }
   },
   "gates": [
-    "demo/check-shapes.py",
-    "demo/conform.py",
-    "demo/run-demo.sh"
+    "conformance/check-shapes.py",
+    "conformance/conform.py",
+    "conformance/run.sh"
   ],
   "languages": {
     "python": {
       "runners": [
-        "languages/python/examples/pull/pull.py",
-        "languages/python/examples/push/push.py"
+        "examples/python/pull.py",
+        "examples/python/push.py"
       ],
       "toolchain": "python3"
     },
     "ruby": {
       "runners": [
-        "languages/ruby/examples/pull/pull.rb",
-        "languages/ruby/examples/push/push.rb"
+        "examples/ruby/pull.rb",
+        "examples/ruby/push.rb"
       ],
       "toolchain": "ruby"
     },
     "javascript": {
       "runners": [
-        "languages/javascript/examples/pull/pull.mjs",
-        "languages/javascript/examples/push/push.mjs"
+        "examples/javascript/pull.mjs",
+        "examples/javascript/push.mjs"
       ],
       "toolchain": "node"
     },
     "typescript": {
       "runners": [
-        "languages/typescript/examples/pull/pull.ts",
-        "languages/typescript/examples/push/push.ts"
+        "examples/typescript/pull.ts",
+        "examples/typescript/push.ts"
       ],
       "toolchain": "node"
     },
     "go": {
       "runners": [
-        "languages/go/examples/pull/pull.go",
-        "languages/go/examples/push/push.go"
+        "examples/go/pull.go",
+        "examples/go/push.go"
       ],
       "toolchain": "go"
     },
     "java": {
       "runners": [
-        "languages/java/examples/pull/Pull.java",
-        "languages/java/examples/push/Push.java"
+        "examples/java/Pull.java",
+        "examples/java/Push.java"
       ],
       "toolchain": "java"
     },
     "c": {
       "runners": [
-        "languages/c/examples/pull/pull.c",
-        "languages/c/examples/push/push.c"
+        "examples/c/pull.c",
+        "examples/c/push.c"
       ],
       "toolchain": "cc"
     },
     "cpp": {
       "runners": [
-        "languages/cpp/examples/pull/pull.cpp",
-        "languages/cpp/examples/push/push.cpp"
+        "examples/cpp/pull.cpp",
+        "examples/cpp/push.cpp"
       ],
       "toolchain": "c++"
     }
