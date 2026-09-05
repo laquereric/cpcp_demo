@@ -5,8 +5,8 @@
   "description": "Executable PushNote/PullNote demo: stub seam plus push/pull clients in eight languages.",
   "contract": {
     "repo": "https://github.com/laquereric/coordination-protocol-contract-package",
-    "rev": "3b9ce9b",
-    "note": "CIDs and clients implement the contract at this revision; drift is the runner's job to catch, not this file's."
+    "rev": "3b9ce9b3b4e788b961e4332bfbe0949ec2d31c2e",
+    "note": "CIDs and clients implement the contract at this revision; drift is the runner's job to catch, not this file's. Full SHA per repo-format rule 5; this read 3b9ce9b, which is not an object a reader can verify and stops being unique as the repo grows."
   },
   "cids": [
     "demo/push-note.cid.json",
@@ -30,6 +30,25 @@
     "shapes": "demo/check-shapes.py",
     "conform": "demo/conform.py"
   },
+  "registry": {
+    "repo": "https://github.com/laquereric/cpcp_registry",
+    "sha": "30975bad7f86a86ea5bd3e1ad74c53b7fcd00dac",
+    "note": "The registry revision this demo is read against. cpcps is empty at this SHA, so the demo is not yet listed in it -- recorded rather than left to look like an oversight. Full SHA, never an abbreviation."
+  },
+  "scopes": {
+    "source": "coordination-protocol-contract-package spec/scopes.md",
+    "note": "One manifest per scope, including the two this repo does not serve: an omitted scope cannot be told apart from an overlooked one (repo-format rule 2).",
+    "manifests": {
+      "public_cpcp": ".cpcp/public_cpcp/package.json",
+      "pod_internal_cpcp": ".cpcp/pod_internal_cpcp/package.json",
+      "pod_external_cpcp": ".cpcp/pod_external_cpcp/package.json"
+    }
+  },
+  "gates": [
+    "demo/check-shapes.py",
+    "demo/conform.py",
+    "demo/run-demo.sh"
+  ],
   "languages": {
     "python": {
       "runners": [

@@ -1,0 +1,35 @@
+{
+  "kind": "cpcp-scope",
+  "scope": "public_cpcp",
+  "of": "cpcp_demo",
+  "definition": "Exposed to public, like the demo. No credentials, no real data, no published ports beyond loopback on the operator's own machine. Anything public must be replay-safe to observe: reads only, or writes against evaporating demo state. A public endpoint that admits a real write is a defect, not a demo. Auth: none; refusals still apply.",
+  "source": "coordination-protocol-contract-package spec/scopes.md at 3b9ce9b3b4e788b961e4332bfbe0949ec2d31c2e, which also names this repo in the method-to-scope map: 'demo stub | note.list, note.create | public (evaporating state only)'.",
+  "seams": [
+    {
+      "id": "demo-stub",
+      "server": "demo/server.py",
+      "methods": ["note.list", "note.create"],
+      "routes": [
+        "POST /_cpcp/rpc",
+        "GET /_cpcp/cid.json",
+        "GET /_cpcp/up",
+        "GET /up"
+      ],
+      "state": "In-memory notes, created at process start and gone at exit. note.create is a real write to a store that evaporates -- which is what lets a write live at this scope at all.",
+      "auth": "none, by definition of the scope"
+    }
+  ],
+  "exposure": {
+    "measured": true,
+    "bind": "127.0.0.1",
+    "port_default": 18080,
+    "port_env": "PORT",
+    "evidence": "demo/server.py:123 -- ThreadingHTTPServer((\"127.0.0.1\", port), Handler).serve_forever(), port from ENV PORT defaulting to 18080",
+    "note": "Loopback on the operator's own machine, which is what the scope permits. Read from the server rather than restated from the method-to-scope map: rule 4 says exposure is measured, and the map is the claim being checked, not evidence for it."
+  },
+  "invariants": [
+    "No credential is required and none is accepted.",
+    "No durable store: a restart is the reset, so observing the seam cannot damage anything.",
+    "An unknown method refuses here exactly as it would at any other scope."
+  ]
+}

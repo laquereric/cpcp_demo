@@ -1,0 +1,10 @@
+{
+  "kind": "cpcp-scope",
+  "scope": "pod_internal_cpcp",
+  "of": "cpcp_demo",
+  "definition": "Exposed to coordinate containers. Pod-network traffic between containers, ports unpublished, callers allowlisted per seam with Bearer tokens and fail-closed boot on empty allowlists.",
+  "source": "coordination-protocol-contract-package spec/scopes.md at 3b9ce9b3b4e788b961e4332bfbe0949ec2d31c2e",
+  "seams": [],
+  "because": "This repo runs no containers and joins no pod network. Its one seam is a stdlib HTTP server started by hand on loopback for the language matrix; there is nothing here for a container to coordinate with. The pod-internal seams live in magentic-stack (back, vault, bus, persist, mind, switch data plane).",
+  "note": "Present and empty on purpose. Rule 2: an omitted scope cannot be told apart from an overlooked one."
+}

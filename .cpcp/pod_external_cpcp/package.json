@@ -1,0 +1,10 @@
+{
+  "kind": "cpcp-scope",
+  "scope": "pod_external_cpcp",
+  "of": "cpcp_demo",
+  "definition": "Exposed within the ecosystem. Host-published loopback surfaces for operators, editors and browsers -- reachable from the host, never from the open internet.",
+  "source": "coordination-protocol-contract-package spec/scopes.md at 3b9ce9b3b4e788b961e4332bfbe0949ec2d31c2e",
+  "seams": [],
+  "because": "The demo stub binds loopback, which LOOKS like this scope and is not it. pod_external describes an operator surface published from a pod so a human or browser on the host can reach it; the demo publishes nothing and belongs to no pod. Its loopback bind is the public scope's own rule -- 'no published ports beyond loopback on the operator's own machine' -- not evidence of a second scope.",
+  "note": "Present and empty on purpose (rule 2). Recorded here because the resemblance is the thing a reader would otherwise resolve by guessing, and guessing it the other way would invent a scope this repo does not serve."
+}
